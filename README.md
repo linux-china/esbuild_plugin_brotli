@@ -24,12 +24,11 @@ router.get('/assets/tailwind.css', () => {
 
 ```javascript
 import {build, stop} from 'https://deno.land/x/esbuild@v0.13.3/mod.js'
-import brotliPlugin from 'https://deno.land/x/esbuild_plugin_brotli/build.js'
+import brotliPlugin from 'https://deno.land/x/esbuild_plugin_brotli@0.1.2/index.js'
 
 let {outputFiles} = await build({
     bundle: true,
     entryPoints: ['hello.js'],
-    jsxFactory: 'h',
     plugins: [brotliPlugin],
     write: false
 })
