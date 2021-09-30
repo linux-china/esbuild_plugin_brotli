@@ -3,15 +3,17 @@ import {compress} from "https://deno.land/x/brotli@v0.1.4/mod.ts";
 const name = 'brotli'
 
 const setup = ({onResolve, onLoad}) => {
-    onResolve({filter: /.*\?br$/}, ({path}) => ({
+    onResolve({filter: /.*\?br$/}, ({path, resolveDir}) => ({
         path: path,
-        namespace: 'brotli'
+        namespace: 'brotli',
+        pluginData: {resolveDir}
     }));
     onLoad({filter: /.*/, namespace: 'brotli'}, brotliCompress);
 }
 
-const brotliCompress = async ({path}) => {
-    const originalPath = path.replace("?br", "");
+const brotliCompress = async ({path, pluginData}) => {
+    const resolveDir = pluginData.resolveDir;
+    const originalPath = resolveDir + "/" + path.replace("?br", "");
     const rawBytes = await Deno.readFile(originalPath);
     const compressedBytes = compress(rawBytes);
     /*const uncompressedLength = rawBytes.length;
