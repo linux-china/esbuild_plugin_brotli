@@ -23,7 +23,7 @@ router.get('/assets/tailwind.css', () => {
 # esbuild example
 
 ```javascript
-import {build, stop} from 'https://deno.land/x/esbuild@v0.12.1/mod.js'
+import {build, stop} from 'https://deno.land/x/esbuild@v0.13.3/mod.js'
 import brotliPlugin from 'https://deno.land/x/esbuild_plugin_brotli/build.js'
 
 let {outputFiles} = await build({
