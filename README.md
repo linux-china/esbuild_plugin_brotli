@@ -1,4 +1,4 @@
-esbuild-plugin-brotli for Deno
+esbuild_plugin_brotli for Deno
 ==============================
 
 An esbuild plugin to compress asset files with brotli.
